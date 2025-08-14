@@ -1,0 +1,60 @@
+<div class="row">
+    <h1>Manage Products</h1>
+    <div class="col-md-3" *ngFor="let p of products">
+        <div class="card">
+            <!-- <div class="card-header">
+                <img [src]="p.productImage" class="img-fluid" height="150" alt="">
+            </div> -->
+            <div class="card-body">
+                <h1 class="card-title">{{p.productName}}</h1>
+                <p>
+                    {{p.productDescription}}
+                </p>
+                <p>Price<label for="" class="badge bg-primary">{{p.productPrice |currency:'INR'}}</label></p>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-danger" (click)="deleteNow(p.productId)">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+                <button class="btn btn-warning" (click)="updatecontent(p)" 
+                data-bs-target="#updatemodal" data-bs-toggle="modal">
+                    <i class="fa-solid fa-edit"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="updateobj">
+<div class="modal fade" id="updatemodal">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h1>Update</h1>
+            <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="" class="form-label">product name</label>
+                <input type="text" class="form-control" [(ngModel)]="updateobj.productName">
+            </div>
+             <div class="form-group">
+                <label for="" class="form-label">product description</label>
+                <input type="text" class="form-control" [(ngModel)]="updateobj.productDescription">
+            </div>
+             <div class="form-group">
+                <label for="" class="form-label">product price</label>
+                <input type="text" class="form-control" [(ngModel)]="updateobj.productPrice">
+            </div>
+             <div class="form-group">
+                <label for="" class="form-label">product image</label>
+                <input type="text" class="form-control" [(ngModel)]="updateobj.productImage">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-warning" (click)="updatenow()" data-bs-dismiss="modal">Update Now</button>
+        </div>
+    </div>
+</div>
+</div>
+</div>
